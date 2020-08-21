@@ -29,6 +29,7 @@ from pyrogram import Client
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+import email.utils
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
@@ -197,12 +198,18 @@ def send_mail(dest, itemType, get_graph):
     mail_pass = PropertiesReaderX(path.format('configScripts.properties')).getValue('PathSectionEmail', 'mail_pass')
     ####################################################################################################################
 
+    email_from = email.utils.formataddr(tuple(email_from.replace(">", "").split(" <")))
+
     dests = ', '.join(dest)
     msg = body
     msg = msg.replace("\\n", "").replace("\n", "<br>")
+    try:
+        Subject = re.sub(r"(<(\/)?[a-z]>)", "", subject)
+    except:
+        Subject = subject
 
     msgRoot = MIMEMultipart('related')
-    msgRoot['Subject'] = subject
+    msgRoot['Subject'] = Subject
     msgRoot['From'] = email_from
     msgRoot['To'] = dests
 

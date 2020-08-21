@@ -61,7 +61,7 @@ O "How to" foi testado no ZABBIX 3.0 ao 5.0 no Debian 8 ao 10, Ubuntu 14 ao 20 e
 	</li>
 	<li>
 		<strong>
-			<a href=#iniciando-configuração>Configuração de envio</a>
+			<a href=#comando-para-teste>Teste de envio</a>
 		</strong>
 	</li>	
 	<li>
@@ -171,11 +171,19 @@ Para iniciarmos a configuração de envio, é preciso editar o arquivo de config
 “api.hash” = '12asdc64vfda19df165asdvf984dbf'</font></font></li>
 </ul>
 
-# Iniciando Configuração
-Para iniciarmos a configuração de envio, é preciso logar pela primeira vez manualmente, então execute o <code>notificacoes-teste.py</code> com o comando abaixo:
+# Comando para teste
 
-<pre>sudo -u zabbix ./notificacoes-teste.py info</pre>
+Script para realização do teste e iniciar a configuração:<br>
+<b>Script, ID, Nome ou user.</b><br>
+Exs:<br>
+<pre>sudo -u zabbix ./notificacoes-teste.py "123456789"</pre>
+ou
+<pre>sudo -u zabbix ./notificacoes-teste.py "Nome Sobrenome"</pre>
+ou
+<pre>sudo -u zabbix ./notificacoes-teste.py "usuário"</pre>
 
+<b>OBS:</b><br>
+<b>1 – </b> 
 Será solicitado inserir o token do bot ou número de telefone da conta que será usada para envio, 
 se optar por usar uma conta, use a seguinte estrutura de telefone 
 <code>5522988776655</code> (prefixo para o Brasil, DDD e número), 
@@ -183,10 +191,19 @@ depois que der “Enter”, receberá um código por SMS e/ou no aplicativo
 <i>(no desktop, no celular ou na versão web, basta estar logado)</i>, 
 adicione o codigo e estará pronto.
 
-Ao final do processo, será listado todos os chats vinculados ao cadastro informado, 
-para configurarmos o zabbix a enviar mensagens para usuários, grupos ou canais, 
-é necessário sabermos o nome de usuário (do grupo ou canal) ou id, para obter, 
-basta executar um dos comandos abaixo:<br>
+<b>2 – </b>"123456789", "Nome Sobrenome" ou "usuário" são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido com os comandos <a href=#iniciando-configuração>supracitados</a> para realização do teste;<br>
+
+<b>3 – </b> É necessário aumentar o tempo de timeout da aplicação, então no arquivo de configuração do server.<br>
+(se não mudou o local padrão, estará aqui <code>/etc/zabbix/zabbix_server.conf</code> ou aqui <code>/usr/local/etc/zabbix_server.conf</code>)
+vá até 0 paramemtro <code>\# Timeout=3</code> descomente e aumente para 30, ficando assim: 
+<code>Timeout=30</code><br>
+dessa forma fica garantido a entrega.
+
+<h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>
+Consultando Configuração
+</h3>
+
+Para iniciarmos a configuração de envio, é preciso logar pela primeira vez manualmente, então execute o <code>notificacoes-teste.py</code> com o comando abaixo:
 
 <b>Script info ID, Nome ou user.</b><br>
 Exs:<br>
@@ -202,28 +219,6 @@ Para enviar a mensagem, é preciso usar o ID ou o nome, conforme as estruturas a
 <code>129131403</code><br>
 <code>Sansão Simonton</code><br>
 <code>sansaoipb</code><br>
-
-<h3><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg></a>
-Comando para teste
-</h3>
-
-Script para realização do teste:<br>
-<b>Script, ID, Nome ou user.</b><br>
-Exs:<br>
-<pre>sudo -u zabbix ./notificacoes-teste.py "123456789"</pre>
-ou
-<pre>sudo -u zabbix ./notificacoes-teste.py "Nome Sobrenome"</pre>
-ou
-<pre>sudo -u zabbix ./notificacoes-teste.py "usuário"</pre>
-
-<b>OBS:</b><br>
-<b>1 – </b>"123456789", "Nome Sobrenome" ou "usuário" são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido com os comandos <a href=#iniciando-configuração>supracitados</a> para realização do teste;<br>
-
-<b>2 – </b> É necessário aumentar o tempo de timeout da aplicação, então no arquivo de configuração do server.<br>
-(se não mudou o local padrão, estará aqui <code>/etc/zabbix/zabbix_server.conf</code> ou aqui <code>/usr/local/etc/zabbix_server.conf</code>)
-vá até 0 paramemtro <code>\# Timeout=3</code> descomente e aumente para 30, ficando assim: 
-<code>Timeout=30</code><br>
-dessa forma fica garantido a entrega.
 
 # Configurando o envio:
 
