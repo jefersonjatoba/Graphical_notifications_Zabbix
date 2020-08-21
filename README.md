@@ -110,7 +110,7 @@ O "How to" foi testado no ZABBIX 3.0 ao 5.0 no Debian 8 ao 10, Ubuntu 14 ao 20 e
 <pre>cd /tmp ; wget https://raw.githubusercontent.com/sansaoipb/scripts/master/notificacoes.sh -O notificacoes.sh ; dos2unix notificacoes.sh ; sh notificacoes.sh</pre>
 
 <b>OBS:</b><br>
-Existe um local padrão onde fica os scripts, que tem 2 locais possiveis dependendo da forma de instalação do ZABBIX, compilando (<code>/usr/local/share/zabbix/alertscripts/</code>) ou por pacote (<code>/usr/lib/zabbix/alertscripts/</code>), respectivamente.<br>
+Existe um local padrão onde fica os scripts, que tem 2 locais possíveis dependendo da forma de instalação do ZABBIX, compilando (<code>/usr/local/share/zabbix/alertscripts/</code>) ou por pacote (<code>/usr/lib/zabbix/alertscripts/</code>), respectivamente.<br>
 Ao final da execução do script, ele indicará qual pasta você acessará.
 
 # Criando Chave API:
@@ -126,7 +126,7 @@ Para iniciarmos a configuração de envio, é preciso editar o arquivo de config
 
 <b>OBS:</b><br>
 <b>1 – </b>O usuário que você declarar no campo <i>“user”</i> precisa ter permissão no mínimo de leitura no ambiente.<br>
-<b>2 – </b>Os campos contidos em [PathSectionEmail] e [PathSectionTelegram], são opcionais, logo se for usar somente telegram, não é necessario preencher a parte do email, assim como de forma inversa.<br>
+<b>2 – </b>Os campos contidos em [PathSectionEmail] e [PathSectionTelegram], são opcionais, logo se for usar somente telegram, não é necessário preencher a parte do email, assim como de forma inversa.<br>
 <b>3 – </b>Se usar gmail, é preciso alterar o acesso à conta para aplicativos, se tiver "Verificação em duas etapas" ativado, é necessário criar uma "Senha de app", crie 
 <a href="https://support.google.com/accounts/answer/185833" class="wikilink2" title="App MAIS seguros" rel="nofollow">Aqui</a>.<br>Caso não tenha verificação em duas etapas, pode somente ativar "Acesso a app menos seguros", altere 
 <a href="https://support.google.com/accounts/answer/6010255?hl=pt-BR" class="wikilink2" title="App menos seguros" rel="nofollow">Aqui</a>.<br>
@@ -194,7 +194,7 @@ Exs:<br>
 ou
 <pre>sudo -u zabbix ./notificacoes-teste.py "info" "Nome Sobrenome"</pre>
 ou
-<pre>sudo -u zabbix ./notificacoes-teste.py "info" "usuario"</pre>
+<pre>sudo -u zabbix ./notificacoes-teste.py "info" "usuário"</pre>
 
 pegue o “ID”, o “nome de cadastro” ou o "nome de registro" que aparecerá.
 
@@ -214,12 +214,12 @@ Exs:<br>
 ou
 <pre>sudo -u zabbix ./notificacoes-teste.py "Nome Sobrenome"</pre>
 ou
-<pre>sudo -u zabbix ./notificacoes-teste.py "usuario"</pre>
+<pre>sudo -u zabbix ./notificacoes-teste.py "usuário"</pre>
 
 <b>OBS:</b><br>
-<b>1 – </b>"123456789", "Nome Sobrenome" ou "usuario" são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido com os comandos <a href=#iniciando-configuração>supracitados</a> para realização do teste;<br>
+<b>1 – </b>"123456789", "Nome Sobrenome" ou "usuário" são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido com os comandos <a href=#iniciando-configuração>supracitados</a> para realização do teste;<br>
 
-<b>2 – </b> É necessario aumentar o tempo de timeout da aplicação, então no arquivo de configuração do server.<br>
+<b>2 – </b> É necessário aumentar o tempo de timeout da aplicação, então no arquivo de configuração do server.<br>
 (se não mudou o local padrão, estará aqui <code>/etc/zabbix/zabbix_server.conf</code> ou aqui <code>/usr/local/etc/zabbix_server.conf</code>)
 vá até 0 paramemtro <code>\# Timeout=3</code> descomente e aumente para 30, ficando assim: 
 <code>Timeout=30</code><br>
@@ -277,7 +277,7 @@ A “<i>Mensagem Padrão</i>” na aba <b>“<u>Ação</u>”</b> existe somente
 <i>Por sugestão de "Everaldo Santos Cabral" 
 (<a href="https://t.me/everaldoscabral" class="wikilink2" title="Conversar com ele" rel="nofollow">@everaldoscabral</a>)</i>
 
-Vamos entender um pouco as funções configuráveis do arquivo de configuração <code>configScripts.properties</code>
+Vamos entender um pouco as funções configuráveis do arquivo de configuração (<code>configScripts.properties</code>)
 
 <blockquote>[PathSection]</blockquote>
 <ul>
