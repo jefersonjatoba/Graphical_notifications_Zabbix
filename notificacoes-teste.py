@@ -293,7 +293,7 @@ def send_telegram(dest, itemType, get_graph):
 
     with app:
         Contatos = app.get_contacts()
-        Dialogos = app.get_dialogs()
+        Dialogos = app.iter_dialogs()
         flag = True
         while flag:
             for contato in Contatos:
@@ -497,9 +497,11 @@ def getItemType():
         print(msg)
 
 def get_info(name=None):
+    ContA = 0
     with app:
         infos = ""
-        dialogos = app.get_dialogs()
+        dialogos = app.iter_dialogs()
+        infos += ""
         if name:
             for dialogo in dialogos:
                 Id = "Id: {}".format(dialogo.chat.id)
@@ -509,14 +511,23 @@ def get_info(name=None):
                     username = dialogo.chat.username
                     nome = "Nome: {} {}\nNonde de usuário: {}".format(dialogo.chat.first_name, dialogo.chat.last_name, username)
                 if name.lower() in nome.lower() or name in Id:
+                    if "" == infos:
+                        infos += "\nLista de chats (ContA):\n\n"
+
                     infos += "{}\n{}\n\n".format(Id, nome)
+                    ContA += 1
 
             if not infos:
                 infos = "Não há registros referente à \"{}\"\n".format(name)
+
         else:
-            infos += "\nLista de chats ({}):\n\n".format(len(dialogos))
-            for dialog in app.iter_dialogs():
-                infos += "{}\n".format(dialog.chat.title or dialog.chat.first_name)
+            infos += "\nLista de chats (ContA):\n\n"
+            for dialogo in dialogos:
+                infos += "{}\n".format(dialogo.chat.title or dialogo.chat.first_name)
+                ContA += 1
+
+        infos = re.sub("ContA", f"{ContA}", infos)
+
     return infos
 
 def main():

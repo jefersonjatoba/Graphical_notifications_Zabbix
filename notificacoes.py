@@ -332,7 +332,7 @@ def send_telegram(dest, itemType, get_graph):
 
     with app:
         Contatos = app.get_contacts()
-        Dialogos = app.get_dialogs()
+        Dialogos = app.iter_dialogs()
         flag = True
         while flag:
             for contato in Contatos:
