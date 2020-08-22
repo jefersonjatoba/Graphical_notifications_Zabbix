@@ -512,7 +512,7 @@ def get_info(name=None):
                     nome = "Nome: {} {}\nNonde de usuário: {}".format(dialogo.chat.first_name, dialogo.chat.last_name, username)
                 if name.lower() in nome.lower() or name in Id:
                     if "" == infos:
-                        infos += "\nLista de chats (ContA):\n\n"
+                        infos += "\nChats encontrados (ContA):\n\n"
 
                     infos += "{}\n{}\n\n".format(Id, nome)
                     ContA += 1
@@ -521,10 +521,13 @@ def get_info(name=None):
                 infos = "Não há registros referente à \"{}\"\n".format(name)
 
         else:
-            infos += "\nLista de chats (ContA):\n\n"
+            infos += "\nChats encontrados (ContA):\n\n"
             for dialogo in dialogos:
                 infos += "{}\n".format(dialogo.chat.title or dialogo.chat.first_name)
                 ContA += 1
+
+        if ContA == 1:
+            infos = re.sub("Chats encontrados \(ContA\)", f"Único chat encontrado", infos)
 
         infos = re.sub("ContA", f"{ContA}", infos)
 

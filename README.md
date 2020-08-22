@@ -191,11 +191,11 @@ depois que der “Enter”, receberá um código por SMS e/ou no aplicativo
 <i>(no desktop, no celular ou na versão web, basta estar logado)</i>, 
 adicione o codigo e estará pronto.
 
-<b>2 – </b>"123456789", "Nome Sobrenome" ou "usuário" são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido com os comandos <a href=#iniciando-configuração>supracitados</a> para realização do teste;<br>
+<b>2 – </b>"123456789", "Nome Sobrenome" ou "usuário" são informações fictícias para exemplificar, busque um UserID ou nome de usuário válido no seu ambiente;<br>
 
-<b>3 – </b> É necessário aumentar o tempo de timeout da aplicação, então no arquivo de configuração do server.<br>
+<b>3 – </b> É recomendado aumentar o tempo de timeout da aplicação, então no arquivo de configuração do server.<br>
 (se não mudou o local padrão, estará aqui <code>/etc/zabbix/zabbix_server.conf</code> ou aqui <code>/usr/local/etc/zabbix_server.conf</code>)
-vá até 0 paramemtro <code>\# Timeout=3</code> descomente e aumente para 30, ficando assim: 
+vá até o paramemtro <code>\# Timeout=3</code> descomente e aumente para 30, ficando assim: 
 <code>Timeout=30</code><br>
 dessa forma fica garantido a entrega.
 
@@ -203,7 +203,7 @@ dessa forma fica garantido a entrega.
 Consultando Configuração
 </h3>
 
-Para iniciarmos a configuração de envio, é preciso logar pela primeira vez manualmente, então execute o <code>notificacoes-teste.py</code> com o comando abaixo:
+Para consultar a configuração de um usuário, grupo ou canal, execute o comando abaixo:
 
 <b>Script info ID, Nome ou user.</b><br>
 Exs:<br>
@@ -215,10 +215,12 @@ ou
 
 pegue o “ID”, o “nome de cadastro” ou o "nome de registro" que aparecerá.
 
-Para enviar a mensagem, é preciso usar o ID ou o nome, conforme as estruturas abaixo:<br>
-<code>129131403</code><br>
-<code>Sansão Simonton</code><br>
-<code>sansaoipb</code><br>
+
+Para enviar a mensagem, é preciso usar o ID, o nome do contato ou o nome de usuário, conforme as estruturas apresentada pelo comando supracitado:<br>
+
+<b>OBS:</b><br>
+<b>1 – </b> Caso não esteja usando bot, poderá ainda executar o comando
+<pre>sudo -u zabbix ./notificacoes-teste.py "info"</pre> para ter a quantidade e nome de todos os seus chats 
 
 # Configurando o envio:
 
