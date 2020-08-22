@@ -104,10 +104,10 @@ O "How to" foi testado no ZABBIX 3.0 ao 5.0 no Debian 8 ao 10, Ubuntu 14 ao 20 e
 <pre>apt-get install -y wget dos2unix git sudo curl</pre>
 
 <blockquote> <p>CentOS 6.x, 7 e 8</p> </blockquote>
-<pre>yum install -y epel-release ; yum install -y wget dos2unix git sudo curl</pre>
+<pre>yum install -y wget dos2unix git sudo curl</pre>
 
 <blockquote> <p>Faça o download do script de instalação</p> </blockquote>
-<pre>cd /tmp ; wget https://raw.githubusercontent.com/sansaoipb/scripts/master/notificacoes.sh -O notificacoes.sh ; dos2unix notificacoes.sh ; sh notificacoes.sh</pre>
+<pre>cd /tmp ; wget https://raw.githubusercontent.com/sansaoipb/scripts/master/notificacoes.sh -O notificacoes.sh ; sudo dos2unix notificacoes.sh ; sudo sh notificacoes.sh</pre>
 
 <b>OBS:</b><br>
 Existe um local padrão onde fica os scripts, que tem 2 locais possíveis dependendo da forma de instalação do ZABBIX, compilando (<code>/usr/local/share/zabbix/alertscripts/</code>) ou por pacote (<code>/usr/lib/zabbix/alertscripts/</code>), respectivamente.<br>
